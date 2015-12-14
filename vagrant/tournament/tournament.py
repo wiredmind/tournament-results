@@ -16,7 +16,6 @@ def deleteMatches():
     conn = connect()
     c = conn.cursor()
     c.execute("DELETE FROM match;")
-    conn.commit()
     conn.close()
 
 
@@ -25,7 +24,6 @@ def deletePlayers():
     conn = connect()
     c = conn.cursor()
     c.execute("DELETE from player;")
-    conn.commit()
     conn.close()
 
 
@@ -34,7 +32,6 @@ def countPlayers():
     conn = connect()
     c = conn.cursor()
     c.execute("SELECT count(id) FROM player;")
-    conn.commit()
     conn.close()
 
 
@@ -51,6 +48,7 @@ def registerPlayer(full_name):
     c = conn.cursor()
     c.execute("INSERT INTO player (full_name) VALUES (%s)", full_name)
     conn.commit()
+    conn.close()
 
 
 def playerStandings():
